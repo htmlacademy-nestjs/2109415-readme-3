@@ -4,7 +4,6 @@ import { BlogPostModule } from './blog-post/blog-post.module';
 import { CommentModule } from './comment/comment.module';
 import { BlogTagModule } from './blog-tag/ bog-tag.module';
 
-
 @Module({
   imports: [PrismaModule, BlogPostModule, CommentModule, BlogTagModule],
   controllers: [],

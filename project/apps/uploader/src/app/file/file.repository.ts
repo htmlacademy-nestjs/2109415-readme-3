@@ -17,8 +17,6 @@ export class FileRepository {
   }
 
   public async findById(id: string): Promise<File | null> {
-    return this.fileModel
-      .findOne({ _id: id})
-      .exec();
+    return this.fileModel.findOne({ _id: id }).exec();
   }
 }

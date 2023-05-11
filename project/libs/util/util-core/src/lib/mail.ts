@@ -13,8 +13,8 @@ export function getMailerAsyncOptions(optionSpace: string): MailerAsyncOptions {
           secure: false,
           auth: {
             user: configService.get<string>(`${optionSpace}.user`),
-            pass: configService.get<string>(`${optionSpace}.password`)
-          }
+            pass: configService.get<string>(`${optionSpace}.password`),
+          },
         },
         defaults: {
           from: configService.get<string>('mail.from'),
@@ -23,11 +23,11 @@ export function getMailerAsyncOptions(optionSpace: string): MailerAsyncOptions {
           dir: path.resolve(__dirname, 'assets'),
           adapter: new HandlebarsAdapter(),
           options: {
-            strict: true
-          }
-        }
-      }
+            strict: true,
+          },
+        },
+      };
     },
     inject: [ConfigService],
-  }
+  };
 }

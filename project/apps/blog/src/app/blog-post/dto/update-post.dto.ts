@@ -1,7 +1,33 @@
-import { LinkPostBody, PicturePostBody,   QuotePostBody,  TextPostBody, VideoPostBody, postTypes } from "@project/shared/app-types";
-import { Type } from "class-transformer";
-import { ArrayMaxSize, Contains, IsArray, IsBoolean, IsNotEmpty,  IsNumber,  IsOptional,  IsString, IsUrl, MaxLength, MinLength, ValidateNested } from "class-validator";
-import { QUOTE_POST_AUTOR_LENGTH, QUOTE_POST_TEXT_LENGTH, TEXT_POST_ANNOUNCEMENT_LENGTH, TEXT_POST_NAME_LENGTH, TEXT_POST_TEXT_LENGTH, VIDEO_TITLE_LENGTH } from "../blog-post.constant";
+import {
+  LinkPostBody,
+  PicturePostBody,
+  QuotePostBody,
+  TextPostBody,
+  VideoPostBody,
+} from '@project/shared/app-types';
+import { Type } from 'class-transformer';
+import {
+  ArrayMaxSize,
+  Contains,
+  IsArray,
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUrl,
+  MaxLength,
+  MinLength,
+  ValidateNested,
+} from 'class-validator';
+import {
+  QUOTE_POST_AUTOR_LENGTH,
+  QUOTE_POST_TEXT_LENGTH,
+  TEXT_POST_ANNOUNCEMENT_LENGTH,
+  TEXT_POST_NAME_LENGTH,
+  TEXT_POST_TEXT_LENGTH,
+  VIDEO_TITLE_LENGTH,
+} from '../blog-post.constant';
 
 class VideoPostDto implements VideoPostBody {
   @IsString()
@@ -10,12 +36,12 @@ class VideoPostDto implements VideoPostBody {
   public title: string;
 
   @IsString()
-  @IsUrl( undefined, { message: 'linkVideo URL is not valid.' })
+  @IsUrl(undefined, { message: 'linkVideo URL is not valid.' })
   @Contains('.youtu')
   public linkVideo: string;
 }
 
-class TextPostDto implements TextPostBody{
+class TextPostDto implements TextPostBody {
   @IsString()
   @MinLength(TEXT_POST_NAME_LENGTH.Min)
   @MaxLength(TEXT_POST_NAME_LENGTH.Max)
@@ -32,7 +58,7 @@ class TextPostDto implements TextPostBody{
   public text: string;
 }
 
-class QuotePostDto implements QuotePostBody{
+class QuotePostDto implements QuotePostBody {
   @IsString()
   @MinLength(QUOTE_POST_TEXT_LENGTH.Min)
   @MaxLength(QUOTE_POST_TEXT_LENGTH.Max)
@@ -44,13 +70,13 @@ class QuotePostDto implements QuotePostBody{
   public autor: string;
 }
 
-class PicturePostDto implements PicturePostBody{
+class PicturePostDto implements PicturePostBody {
   @IsString()
   @IsNotEmpty()
   public picture: string;
 }
 
-class LinkPostDto implements LinkPostBody{
+class LinkPostDto implements LinkPostBody {
   @IsString()
   @IsNotEmpty()
   @IsUrl()

@@ -1,9 +1,19 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsISO8601, IsString, MaxLength, MinLength } from 'class-validator';
-import { AUTH_USER_DATE_BIRTH_NOT_VALID, AUTH_USER_EMAIL_NOT_VALID } from "./dto.constant";
+import { ApiProperty } from '@nestjs/swagger';
+import {
+  IsEmail,
+  IsISO8601,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
+import {
+  AUTH_USER_DATE_BIRTH_NOT_VALID,
+  AUTH_USER_EMAIL_NOT_VALID,
+  NAME_LENGTH,
+  PASSWORD_LENGTH,
+} from './dto.constant';
 
 export class CreateUserDto {
-
   @ApiProperty({
     description: 'User unique address',
     example: 'user@user.ru',
@@ -23,26 +33,25 @@ export class CreateUserDto {
     example: 'Keks',
   })
   @IsString()
-  @MinLength(3)
-  @MaxLength(50)
+  @MinLength(NAME_LENGTH.Min)
+  @MaxLength(NAME_LENGTH.Max)
   public firstname: string;
 
   @ApiProperty({
     description: 'User last name',
-    example: 'Ivanov'
+    example: 'Ivanov',
   })
-  @MinLength(3)
-  @MaxLength(50)
+  @MinLength(NAME_LENGTH.Min)
+  @MaxLength(NAME_LENGTH.Max)
   @IsString()
   public lastname: string;
 
   @ApiProperty({
     description: 'User password',
-    example: '123456'
+    example: '123456',
   })
-  @MinLength(6)
-  @MaxLength(12)
+  @MinLength(PASSWORD_LENGTH.Min)
+  @MaxLength(PASSWORD_LENGTH.Max)
   @IsString()
   public password: string;
 }
-

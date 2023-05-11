@@ -15,7 +15,7 @@ export class MailService {
       context: {
         user: `${subscriber.firstname} ${subscriber.lastname}`,
         email: `${subscriber.email}`,
-      }
-    })
+      },
+    });
   }
 }

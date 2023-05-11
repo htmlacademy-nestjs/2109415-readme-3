@@ -12,13 +12,15 @@ export class BlogUserEntity implements User {
   public passwordHash: string;
   public role: UserRole;
   public subscribe: string[];
+  public mySubscribers: string[];
+  public myPostsQtt: number;
 
   constructor(blogUser: User) {
     this.fillEntity(blogUser);
   }
 
   public toObject() {
-    return {...this};
+    return { ...this };
   }
 
   public fillEntity(blogUser: User) {
@@ -31,6 +33,8 @@ export class BlogUserEntity implements User {
     this.passwordHash = blogUser.passwordHash;
     this.role = blogUser.role;
     this.subscribe = [...blogUser.subscribe];
+    this.mySubscribers = [...blogUser.mySubscribers];
+    this.myPostsQtt = blogUser.myPostsQtt;
   }
 
   public async setPassword(password: string): Promise<BlogUserEntity> {

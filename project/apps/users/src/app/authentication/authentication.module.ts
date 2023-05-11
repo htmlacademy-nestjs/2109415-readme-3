@@ -16,17 +16,17 @@ import { RefreshTokenModule } from '../refresh-token/refresh-token.module';
     BlogUserModule,
     JwtModule.registerAsync({
       inject: [ConfigService],
-      useFactory: getJwtOptions
+      useFactory: getJwtOptions,
     }),
     NotifyModule,
-    RefreshTokenModule
+    RefreshTokenModule,
   ],
   controllers: [AuthenticationController],
   providers: [
     AuthenticationService,
     JwtAccessStrategy,
     LocalStrategy,
-    JwtRefreshStrategy
+    JwtRefreshStrategy,
   ],
 })
 export class AuthenticationModule {}

@@ -1,4 +1,4 @@
-import {UserRole} from './user-role.enum';
+import { UserRole } from './user-role.enum';
 
 export interface User {
   _id?: string;
@@ -9,5 +9,7 @@ export interface User {
   avatar: string;
   passwordHash: string;
   role: UserRole;
-  subscribe: string[];
+  subscribe?: string[];
+  mySubscribers?: string[];
+  myPostsQtt: number;
 }

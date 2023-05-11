@@ -1,5 +1,6 @@
 import { registerAs } from '@nestjs/config';
 import * as Joi from 'joi';
+import { VALIDATION_SCHEMA_TYPE } from '@project/shared/app-types';
 
 const DEFAULT_PORT = 3000;
 const DEFAULT_MONGO_PORT = 27017;
@@ -16,7 +17,7 @@ export interface UploaderConfig {
     name: string;
     password: string;
     authBase: string;
-  }
+  };
 }
 
 export default registerAs('application', (): UploaderConfig => {
@@ -27,22 +28,26 @@ export default registerAs('application', (): UploaderConfig => {
     port: parseInt(process.env.PORT || DEFAULT_PORT.toString(), 10),
     db: {
       host: process.env.MONGO_HOST,
-      port: parseInt(process.env.MONGO_PORT ?? DEFAULT_MONGO_PORT.toString(), 10),
+      port: parseInt(
+        process.env.MONGO_PORT ?? DEFAULT_MONGO_PORT.toString(),
+        10
+      ),
       name: process.env.MONGO_DB,
       user: process.env.MONGO_USER,
       password: process.env.MONGO_PASSWORD,
       authBase: process.env.MONGO_AUTH_BASE,
-    }
+    },
   };
 
   const validationSchema = Joi.object<UploaderConfig>({
     serveRoot: Joi.string().required(),
-    environment: Joi.string()
-      .valid('development', 'production', 'stage'),
-    port: Joi.number()
-      .port()
-      .default(DEFAULT_PORT),
-      uploadDirectory: Joi.string(),
+    environment: Joi.string().valid(
+      VALIDATION_SCHEMA_TYPE.Development,
+      VALIDATION_SCHEMA_TYPE.Production,
+      VALIDATION_SCHEMA_TYPE.Stage
+    ),
+    port: Joi.number().port().default(DEFAULT_PORT),
+    uploadDirectory: Joi.string(),
     db: Joi.object({
       host: Joi.string().valid().hostname(),
       port: Joi.number().port(),
@@ -50,7 +55,7 @@ export default registerAs('application', (): UploaderConfig => {
       user: Joi.string().required(),
       password: Joi.string().required(),
       authBase: Joi.string().required(),
-    })
+    }),
   });
 
   const { error } = validationSchema.validate(config, { abortEarly: true });
@@ -58,7 +63,7 @@ export default registerAs('application', (): UploaderConfig => {
   if (error) {
     throw new Error(
       `[Uploader Config]: Environments validation failed. Please check .env file.
-       Error message: ${error.message}`,
+       Error message: ${error.message}`
     );
   }
 

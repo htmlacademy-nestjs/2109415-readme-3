@@ -10,7 +10,7 @@ export class NotifyService {
   constructor(
     private readonly rabbitClient: AmqpConnection,
     @Inject(rabbitConfig.KEY)
-    private readonly rabbiOptions: ConfigType<typeof rabbitConfig>,
+    private readonly rabbiOptions: ConfigType<typeof rabbitConfig>
   ) {}
 
   public async registerSubscriber(dto: CreateSubscriberDto) {

@@ -1,5 +1,11 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength, MinLength } from "class-validator";
-import { COMMENT_MESSAGE_LENGTH } from "../comment.constant";
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
+import { COMMENT_MESSAGE_LENGTH } from '../comment.constant';
 
 export class CreateComment {
   @IsString()

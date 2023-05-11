@@ -11,13 +11,19 @@ import { BlogTagRepository } from '../blog-tag/blog-tag.repository';
 export class BlogPostService {
   constructor(
     private readonly blogPostRepository: BlogPostRepository,
-    private readonly blogTagRepository: BlogTagRepository,
+    private readonly blogTagRepository: BlogTagRepository
   ) {}
 
   public async createPost(dto: CreatePostDto): Promise<PostEntity> {
-    const tagsSet = new Set(dto.tags)
-    const tags = await this.blogTagRepository.findByIds(Array.from(tagsSet))
-    const postEntity = new BlogPostEntity({ ...dto, tags, isDraft: false, comments: [], favorite: [] });
+    const tagsSet = new Set(dto.tags);
+    const tags = await this.blogTagRepository.findByIds(Array.from(tagsSet));
+    const postEntity = new BlogPostEntity({
+      ...dto,
+      tags,
+      isDraft: false,
+      comments: [],
+      favorite: [],
+    });
     return this.blogPostRepository.create(postEntity);
   }
 
@@ -33,42 +39,53 @@ export class BlogPostService {
     return this.blogPostRepository.find(query);
   }
 
-  public async getMyFeedPosts(query: PostQuery, ids: string[]): Promise<PostEntity[]> {
+  public async getMyFeedPosts(
+    query: PostQuery,
+    ids: string[]
+  ): Promise<PostEntity[]> {
     return this.blogPostRepository.findByUserIds(query, ids);
   }
 
   public async updatePost(id: number, dto: UpdatePostDto): Promise<PostEntity> {
-    const tagsSet = new Set(dto.tags)
-    const tags = await this.blogTagRepository.findByIds(Array.from(tagsSet))
+    const tagsSet = new Set(dto.tags);
+    const tags = await this.blogTagRepository.findByIds(Array.from(tagsSet));
     const oldPost = await this.blogPostRepository.findById(id);
-    const postEntity = new BlogPostEntity({...oldPost, ...dto, tags, isDraft: false});
+    const postEntity = new BlogPostEntity({
+      ...oldPost,
+      ...dto,
+      tags,
+      isDraft: false,
+    });
     postEntity.createdAt = oldPost.createdAt;
-    return this.blogPostRepository.update(id, postEntity)
+    return this.blogPostRepository.update(id, postEntity);
   }
 
-  public async repostPost(originalPostId: number, newOnerId: string): Promise<PostEntity> {
+  public async repostPost(
+    originalPostId: number,
+    newOnerId: string
+  ): Promise<PostEntity> {
     const originalPost = await this.blogPostRepository.findById(originalPostId);
-    for(const key in originalPost){
-      if(!originalPost[key]){
-        delete originalPost[key]
+    for (const key in originalPost) {
+      if (!originalPost[key]) {
+        delete originalPost[key];
       } else {
         delete originalPost[key].postId;
         delete originalPost[key].id;
         delete originalPost[key].post;
       }
     }
-    const postEntity = new BlogPostEntity({...originalPost,
-      comments:[],
-      favorite:[],
+    const postEntity = new BlogPostEntity({
+      ...originalPost,
+      comments: [],
+      favorite: [],
       originalPostId: originalPostId,
       userId: newOnerId,
     });
     return this.blogPostRepository.create(postEntity);
-
   }
 
   public async getPostsByTags(tagsText: string[]): Promise<PostEntity[]> {
-    return this.blogPostRepository.findByTagText(tagsText)
+    return this.blogPostRepository.findByTagText(tagsText);
   }
 
   public async getPostByName(searchingText: string): Promise<PostEntity[]> {

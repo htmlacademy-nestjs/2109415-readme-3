@@ -4,7 +4,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({
   collection: 'files',
-  timestamps: true
+  timestamps: true,
 })
 export class FileModel extends Document implements File {
   @Prop({
@@ -13,7 +13,7 @@ export class FileModel extends Document implements File {
   public originalName: string;
 
   @Prop({
-    required: true
+    required: true,
   })
   public hashName: string;
 

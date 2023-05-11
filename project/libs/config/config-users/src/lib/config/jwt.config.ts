@@ -28,7 +28,7 @@ export default registerAs('jwt', (): JWTConfig => {
   if (error) {
     throw new Error(
       `[JWT Config]: Environments validation failed. Please check .env file.
-      Error message: ${error.message}`,
+      Error message: ${error.message}`
     );
   }
 

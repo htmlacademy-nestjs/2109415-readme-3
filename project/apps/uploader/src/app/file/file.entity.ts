@@ -25,6 +25,6 @@ export class FileEntity implements Entity<FileEntity>, File {
   public toObject(): FileEntity {
     return {
       ...this,
-    }
+    };
   }
 }

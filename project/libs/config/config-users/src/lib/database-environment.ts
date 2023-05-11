@@ -1,4 +1,4 @@
-import {IsNumber, IsString, Max, Min} from 'class-validator';
+import { IsNumber, IsString, Max, Min } from 'class-validator';
 
 const MIN_PORT = 0;
 const MAX_PORT = 65535;
@@ -14,34 +14,37 @@ export enum EnvValidationMessage {
 
 export class DatabaseEnvironment {
   @IsString({
-    message: EnvValidationMessage.DBNameRequired
+    message: EnvValidationMessage.DBNameRequired,
   })
   public name: string;
 
   @IsString({
-    message: EnvValidationMessage.DBHostRequired
+    message: EnvValidationMessage.DBHostRequired,
   })
   public host: string;
 
-  @IsNumber({}, {
-    message: EnvValidationMessage.DBPortRequired
-  })
+  @IsNumber(
+    {},
+    {
+      message: EnvValidationMessage.DBPortRequired,
+    }
+  )
   @Min(MIN_PORT)
   @Max(MAX_PORT)
   public port: number;
 
   @IsString({
-    message: EnvValidationMessage.DBUserRequired
+    message: EnvValidationMessage.DBUserRequired,
   })
   public user: string;
 
   @IsString({
-    message: EnvValidationMessage.DBPasswordRequired
+    message: EnvValidationMessage.DBPasswordRequired,
   })
   public password: string;
 
   @IsString({
-    message: EnvValidationMessage.DBBaseAuthRequired
+    message: EnvValidationMessage.DBBaseAuthRequired,
   })
   public authBase: string;
 }

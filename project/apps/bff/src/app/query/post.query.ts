@@ -3,7 +3,7 @@ import { Transform } from 'class-transformer';
 import { DEFAULT_POST_COUNT_LIMIT } from '../bff.constant';
 
 export class PostQuery {
-  @Transform(({ value } ) => +value || DEFAULT_POST_COUNT_LIMIT)
+  @Transform(({ value }) => +value || DEFAULT_POST_COUNT_LIMIT)
   @IsNumber()
   @IsOptional()
   public limit = DEFAULT_POST_COUNT_LIMIT;
@@ -11,7 +11,6 @@ export class PostQuery {
   @IsIn(['byRating', 'byComments'])
   @IsOptional()
   public sortType: 'byRating' | 'byComments' | undefined;
-
 
   @Transform(({ value }) => +value)
   @IsOptional()

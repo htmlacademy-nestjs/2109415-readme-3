@@ -14,17 +14,17 @@ type WritedFile = {
   fileExtension: string;
   subDirectory: string;
   path: string;
-}
+};
 
 @Injectable()
 export class FileService {
   constructor(
     @Inject(uploaderConfig.KEY)
     private readonly applicationConfig: ConfigType<typeof uploaderConfig>,
-    private readonly fileRepository: FileRepository,
+    private readonly fileRepository: FileRepository
   ) {}
   private async writeFile(file: Express.Multer.File): Promise<WritedFile> {
-    const [ year, month ] = dayjs().format('YYYY MM').split(' ');
+    const [year, month] = dayjs().format('YYYY MM').split(' ');
     const { uploadDirectory } = this.applicationConfig;
     const subDirectory = `${year}/${month}`;
 

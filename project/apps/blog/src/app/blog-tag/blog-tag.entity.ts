@@ -1,11 +1,11 @@
-import { Tag } from "@project/shared/app-types";
-import { Entity } from "@project/util/util-types";
+import { Tag } from '@project/shared/app-types';
+import { Entity } from '@project/util/util-types';
 
 export class BlogTagEntity implements Entity<BlogTagEntity>, Tag {
   public tagId: number;
   public text: string;
 
-  constructor (tag: Tag){
+  constructor(tag: Tag) {
     this.fillEntity(tag);
   }
 
@@ -15,6 +15,6 @@ export class BlogTagEntity implements Entity<BlogTagEntity>, Tag {
   }
 
   public toObject(): BlogTagEntity {
-    return {...this};
+    return { ...this };
   }
 }

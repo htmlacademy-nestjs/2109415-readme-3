@@ -9,11 +9,15 @@ import { RefreshTokenService } from '../../refresh-token/refresh-token.service';
 import { TokenNotExistsException } from '../exception/token-not-exists.exception';
 
 @Injectable()
-export class JwtRefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
+export class JwtRefreshStrategy extends PassportStrategy(
+  Strategy,
+  'jwt-refresh'
+) {
   constructor(
-    @Inject(jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>,
+    @Inject(jwtConfig.KEY)
+    private readonly jwtOptions: ConfigType<typeof jwtConfig>,
     private readonly authService: AuthenticationService,
-    private readonly refreshTokenService: RefreshTokenService,
+    private readonly refreshTokenService: RefreshTokenService
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -22,7 +26,7 @@ export class JwtRefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh'
   }
 
   public async validate(payload: RefreshTokenPayload) {
-    if (! await this.refreshTokenService.isExists(payload.tokenId)) {
+    if (!(await this.refreshTokenService.isExists(payload.tokenId))) {
       throw new TokenNotExistsException(payload.tokenId);
     }
 

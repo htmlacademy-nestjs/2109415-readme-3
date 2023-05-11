@@ -1,5 +1,5 @@
-import { IsString, MaxLength, MinLength } from "class-validator";
-import { BLOG_TAG_LENGTH } from "../blog-tag.constant";
+import { IsString, MaxLength, MinLength } from 'class-validator';
+import { BLOG_TAG_LENGTH } from '../blog-tag.constant';
 
 export class CreateTagDto {
   @IsString()

@@ -1,0 +1,33 @@
+version: '3.5'
+services:
+
+  readme.users.mongodb:
+    image: mongo:latest
+    container_name: readme.users.mongodb
+    restart: always
+    env_file:
+      - .readme.users.mongodb.env
+    volumes:
+      - .readme.users.volume:/data/db
+    networks:
+      - readme.users.network
+
+  readme.users:
+    container_name: readme.users
+    depends_on:
+      - readme.users.mongodb
+    restart: always
+    image: readme.users:latest
+    env_file:
+      - .readme.users.env
+    ports:
+      - 3333:3333
+    networks:
+      - readme.users.network
+
+networks:
+  readme.users.network:
+   driver: bridge
+
+volumes:
+  readme.users.volume:

@@ -1,7 +1,6 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsString } from 'class-validator';
 import { AUTH_USER_EMAIL_NOT_VALID } from '../authentication.constant';
-
 
 export class LoginUserDto {
   @ApiProperty({
@@ -13,7 +12,7 @@ export class LoginUserDto {
 
   @ApiProperty({
     description: 'User password',
-    example: '123456'
+    example: '123456',
   })
   @IsString()
   public password: string;

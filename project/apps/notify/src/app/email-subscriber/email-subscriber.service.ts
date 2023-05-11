@@ -11,13 +11,16 @@ export class EmailSubscriberService {
 
   public async addSubscriber(subscriber: CreateSubscriberDto) {
     const { email } = subscriber;
-    const existsSubscriber = await this.emailSubscriberRepository.findByEmail(email);
+    const existsSubscriber = await this.emailSubscriberRepository.findByEmail(
+      email
+    );
 
     if (existsSubscriber) {
       return existsSubscriber;
     }
 
-    return this.emailSubscriberRepository
-      .create(new EmailSubscriberEntity(subscriber));
+    return this.emailSubscriberRepository.create(
+      new EmailSubscriberEntity(subscriber)
+    );
   }
 }

@@ -1,5 +1,5 @@
-import { IsOptional, IsString, MaxLength, MinLength } from "class-validator";
-import { BLOG_TAG_LENGTH } from "../blog-tag.constant";
+import { IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
+import { BLOG_TAG_LENGTH } from '../blog-tag.constant';
 
 export class TagQuery {
   @IsString()

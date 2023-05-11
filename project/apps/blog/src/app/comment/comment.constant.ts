@@ -3,4 +3,4 @@ export enum COMMENT_MESSAGE_LENGTH {
   Max = 300,
 }
 
-export const  DEFAULT_COMMENT_COUNT_LIMIT = 50;
+export const DEFAULT_COMMENT_COUNT_LIMIT = 50;

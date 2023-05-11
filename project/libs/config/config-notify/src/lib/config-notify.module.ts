@@ -10,7 +10,7 @@ const ENV_FILE_PATH = 'apps/notify/.notify.env';
       isGlobal: true,
       cache: true,
       load: [notifyConfig],
-      envFilePath: ENV_FILE_PATH
+      envFilePath: ENV_FILE_PATH,
     }),
   ],
   providers: [],

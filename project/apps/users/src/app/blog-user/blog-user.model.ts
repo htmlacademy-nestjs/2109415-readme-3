@@ -46,6 +46,12 @@ export class BlogUserModel extends Document implements User {
 
   @Prop()
   public subscribe: string[];
+
+  @Prop()
+  public mySubscribers: string[];
+
+  @Prop()
+  public myPostsQtt: number;
 }
 
 export const BlogUserSchema = SchemaFactory.createForClass(BlogUserModel);

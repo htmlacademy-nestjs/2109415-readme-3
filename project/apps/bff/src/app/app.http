@@ -1,39 +1,45 @@
 # Create a new user
 POST http://localhost:4000/api/users/register HTTP/1.1
 Content-Type: application/json
+
 {
-  "email": "user34@nffoooo.local",
+  "email": "uer64@ffooo.loal",
   "dateBirth": "2012-02-12",
   "firstname": "Keks",
   "lastname": "Smith",
   "password": "123456"
 }
 ###
-
 # Login user by email and password
 POST http://localhost:4000/api/users/login HTTP/1.1
 Content-Type: application/json
 
 {
   "email": "user@nffoooo.local",
-  "password": "123456"
+  "password": "123555456"
 }
 ###
-
 # Get new JWT pair
 POST http://localhost:4000/api/users/refresh HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJ0b2tlbklkIjoiYWQ3OWNjYTctOWQ0MC00NTkwLTg3ZTUtMGU2MTQ5NzdlNWNiIiwiaWF0IjoxNjgzMTA2NDI1LCJleHAiOjE2ODU2OTg0MjV9.0dKrN3_6gKih69aexc35_GTLws_bjVuTyDmSMSpFGNI
 ###
-
 # Check user token
 POST http://localhost:4000/api/users/check HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODMyOTMxNzAsImV4cCI6MTY4MzI5Mzc3MH0.okHWrXS9AGh3314IL7VaBgoZf8D4ZGRtfch3EqOHs2w
+Authorization: Bearer
 ###
+# Change pass
+POST http://localhost:4000/api/users/changepassword HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODM1NzI3OTcsImV4cCI6MTY4MzU3MzM5N30.np6A7ITcfFARNiG0vaXLl1XykmrFtNVh6T-jnmiLTic
+Content-Type: application/json
 
+{
+  "oldPassword": "123456",
+  "newPassword": "123555456"
+}
+###
 # Subsribe to user
 POST http://localhost:4000/api/users/subcribe/6448da56b391d4e47be9ef28 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODM0NTQzMjQsImV4cCI6MTY4MzQ1NDkyNH0.d7jdpua53_pAX1UBRlVVs4z4mCpyIg8a3Ym_05s45_U
-####
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDVhMDIxYWNlZDc1NDQ2YzNiYWMxZWQiLCJlbWFpbCI6InVzZXI2NEBmZm9vby5sb2FsIiwicm9sZSI6InVzZXIiLCJsYXN0bmFtZSI6IlNtaXRoIiwiZmlyc3RuYW1lIjoiS2VrcyIsImlhdCI6MTY4MzYyMDQzNywiZXhwIjoxNjgzNjIxMDM3fQ.nI0A08pKBrChaHMaEfzYKBz7DTAvODCd59lDWBpP9lw
 
 # Unsubsribe from user
 POST http://localhost:4000/api/users/unsubcribe/6448cbf2f69083362a2ab69d HTTP/1.1
@@ -41,7 +47,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzM
 ####
 # Create a new post
 POST http://localhost:4000/api/blog HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODM0NTYzMTAsImV4cCI6MTY4MzQ1NjkxMH0.51SCt57erEJ9Snp_6klC0TYPXkFe5V5t0gl7ZIAnuX0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODM3OTY2NjMsImV4cCI6MTY4Mzc5NzI2M30.Q6zUfizRkMlyVvGN_GGRGBKQKRKKk2FHaG7aSUegatw
 Content-Type: application/json
 
 {
@@ -62,11 +68,11 @@ GET http://localhost:4000/api/blog?sortType=byComments HTTP/1.1
 ###
 # Get user posts feed
 GET http://localhost:4000/api/blog/feed?sortType=byComments HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODM0NTYzMTAsImV4cCI6MTY4MzQ1NjkxMH0.51SCt57erEJ9Snp_6klC0TYPXkFe5V5t0gl7ZIAnuX0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODM2MTI5MzIsImV4cCI6MTY4MzYxMzUzMn0.GDRmcJML_MvFA1zQGv2G292kg5Xu5icUQqm1VtrU5iI
 ###
 # Update posr by id
-PATCH http://localhost:4000/api/blog/35 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODMyOTIwMDksImV4cCI6MTY4MzI5MjYwOX0.VzU5iB51ZMJdQzbktaa5xxaPgHhWi2sk7NI3NKPuVc4
+PATCH http://localhost:4000/api/blog/37 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDVhMDIxYWNlZDc1NDQ2YzNiYWMxZWQiLCJlbWFpbCI6InVzZXI2NEBmZm9vby5sb2FsIiwicm9sZSI6InVzZXIiLCJsYXN0bmFtZSI6IlNtaXRoIiwiZmlyc3RuYW1lIjoiS2VrcyIsImlhdCI6MTY4Mzc5MzUxMiwiZXhwIjoxNjgzNzk0MTEyfQ.Yi7xcXp_AgESyKcQZcsnH85rk3oYmW25x9a7-S-DX6U
 Content-Type: application/json
 
 {
@@ -84,7 +90,7 @@ Content-Type: application/json
 }
 ###
 # Find by text
-POST http://localhost:4000/api/blog/findbytext?searchingText=some HTTP/1.1
+POST http://localhost:4000/api/blog/findbytext?searchingText=sofe HTTP/1.1
 ###
 # Repost the post
 POST http://localhost:4000/api/blog/repost/34 HTTP/1.1
@@ -92,8 +98,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzM
 ###
 
 # Delete the post by id
-DELETE http://localhost:4000/api/blog/repost/34 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODMyOTgyOTcsImV4cCI6MTY4MzI5ODg5N30.8A6L6ElTiEz77Qm1N1LLuyVqn-cBEck2LXYWgv-8604
+DELETE http://localhost:4000/api/blog/47 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDUyMDkzMDExYmI2MzU2NTk5OTdhYzIiLCJlbWFpbCI6InVzZXJAbmZmb29vby5sb2NhbCIsInJvbGUiOiJ1c2VyIiwibGFzdG5hbWUiOiJTbWl0aCIsImZpcnN0bmFtZSI6Iktla3MiLCJpYXQiOjE2ODM3OTY2NjMsImV4cCI6MTY4Mzc5NzI2M30.Q6zUfizRkMlyVvGN_GGRGBKQKRKKk2FHaG7aSUegatw
 ###
 
 # Create a new comment

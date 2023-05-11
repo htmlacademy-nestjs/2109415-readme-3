@@ -11,7 +11,8 @@ import { parseTime } from '@project/util/util-core';
 export class RefreshTokenService {
   constructor(
     private readonly refreshTokenRepository: RefreshTokenRepository,
-    @Inject (jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>,
+    @Inject(jwtConfig.KEY)
+    private readonly jwtOptions: ConfigType<typeof jwtConfig>
   ) {}
 
   public async createRefreshSession(payload: RefreshTokenPayload) {
@@ -20,19 +21,21 @@ export class RefreshTokenService {
       tokenId: payload.tokenId,
       createdAt: new Date(),
       userId: payload.sub,
-      expiresIn: dayjs().add(timeValue.value, timeValue.unit).toDate()
+      expiresIn: dayjs().add(timeValue.value, timeValue.unit).toDate(),
     });
 
     return this.refreshTokenRepository.create(refreshToken);
   }
 
   public async deleteRefreshSession(tokenId: string) {
-    return this.refreshTokenRepository.deleteByTokenId(tokenId)
+    return this.refreshTokenRepository.deleteByTokenId(tokenId);
   }
 
   public async isExists(tokenId: string): Promise<boolean> {
-    const refreshToken = await this.refreshTokenRepository.findByTokenId(tokenId);
-    return (refreshToken !== null);
+    const refreshToken = await this.refreshTokenRepository.findByTokenId(
+      tokenId
+    );
+    return refreshToken !== null;
   }
 
   public async deleteExpiredRefreshTokens() {

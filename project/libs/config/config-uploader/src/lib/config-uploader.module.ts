@@ -10,7 +10,7 @@ const ENV_FILE_PATH = 'apps/uploader/.uploader.env';
       isGlobal: true,
       cache: true,
       load: [uploaderConfig],
-      envFilePath: ENV_FILE_PATH
+      envFilePath: ENV_FILE_PATH,
     }),
   ],
   providers: [],

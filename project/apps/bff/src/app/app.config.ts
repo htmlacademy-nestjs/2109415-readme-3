@@ -3,7 +3,7 @@ export enum ApplicationServiceURL {
   Blog = 'http://localhost:3333/api/posts',
   Comments = 'http://localhost:3333/api/comment',
   Tags = 'http://localhost:3333/api/tags',
-  Files = 'http://localhost:3338/api/files'
+  Files = 'http://localhost:3338/api/files',
 }
 
 export const HTTP_CLIENT_MAX_REDIRECTS = 5;

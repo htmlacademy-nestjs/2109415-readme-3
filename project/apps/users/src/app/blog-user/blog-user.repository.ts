@@ -7,10 +7,13 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
-export class BlogUserRepository implements CRUDRepository<BlogUserEntity, string, User> {
+export class BlogUserRepository
+  implements CRUDRepository<BlogUserEntity, string, User>
+{
   constructor(
-    @InjectModel(BlogUserModel.name) private readonly blogUserModel: Model<BlogUserModel>) {
-  }
+    @InjectModel(BlogUserModel.name)
+    private readonly blogUserModel: Model<BlogUserModel>
+  ) {}
 
   public async create(item: BlogUserEntity): Promise<User> {
     const newBlogUser = new this.blogUserModel(item);
@@ -18,25 +21,20 @@ export class BlogUserRepository implements CRUDRepository<BlogUserEntity, string
   }
 
   public async destroy(id: string): Promise<void> {
-    this.blogUserModel.deleteOne({id});
+    this.blogUserModel.deleteOne({ id });
   }
 
   public async findById(id: string): Promise<User | null> {
-    return this.blogUserModel
-      .findOne({_id: id})
-      .exec();
+    return this.blogUserModel.findOne({ _id: id }).exec();
   }
 
   public async findByEmail(email: string): Promise<User | null> {
-    return this.blogUserModel
-      .findOne({email: email})
-      .exec();
+    return this.blogUserModel.findOne({ email: email }).exec();
   }
 
   public async update(id: string, item: BlogUserEntity): Promise<User> {
     return this.blogUserModel
-      .findByIdAndUpdate(id, item.toObject(), {new: true})
+      .findByIdAndUpdate(id, item.toObject(), { new: true })
       .exec();
   }
-
 }

@@ -20,3 +20,5 @@ project/apps/blog/readme.postgres.blog
 project/apps/uploader/readme.mongo.uploader
 project/apps/notify/readme.notify.fakesmtp
 project/apps/notify/fake-smtp-emails
+project/apps/users/readme.users.volume
+project/apps/users/.readme.users.volume

@@ -1,7 +1,7 @@
-export interface Favorite{
-  favoriteId?: number,
-  userId: string,
-  postId: number,
+export interface Favorite {
+  favoriteId?: number;
+  userId: string;
+  postId: number;
   createdAt: Date;
   updatedAt: Date;
 }

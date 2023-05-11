@@ -1,4 +1,12 @@
-import { Controller, Get, Inject, Param, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Inject,
+  Param,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Express } from 'express';
 import 'multer';
@@ -11,12 +19,11 @@ import { MongoidValidationPipe } from '@project/shared/shared-pipes';
 
 @Controller('files')
 export class FileController {
-
   constructor(
     private readonly fileService: FileService,
 
     @Inject(uploaderConfig.KEY)
-    private readonly applicationConfig: ConfigType<typeof uploaderConfig>,
+    private readonly applicationConfig: ConfigType<typeof uploaderConfig>
   ) {}
 
   @Post('/upload')

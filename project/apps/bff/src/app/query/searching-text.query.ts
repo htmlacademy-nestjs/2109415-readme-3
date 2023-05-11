@@ -1,6 +1,6 @@
-import { IsString } from "class-validator";
+import { IsString } from 'class-validator';
 
-export class SearchingTextQuery{
+export class SearchingTextQuery {
   @IsString()
   public searchingText: string;
 }

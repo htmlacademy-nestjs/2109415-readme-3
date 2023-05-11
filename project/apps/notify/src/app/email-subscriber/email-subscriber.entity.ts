@@ -1,7 +1,9 @@
 import { Entity } from '@project/util/util-types';
 import { Subscriber } from '@project/shared/app-types';
 
-export class EmailSubscriberEntity implements Entity<EmailSubscriberEntity>, Subscriber {
+export class EmailSubscriberEntity
+  implements Entity<EmailSubscriberEntity>, Subscriber
+{
   public id: string;
   public email: string;
   public firstname: string;

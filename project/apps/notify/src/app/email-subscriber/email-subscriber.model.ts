@@ -8,7 +8,7 @@ const SUBSCRIBERS_COLLECTION_NAME = 'email-subscribers';
   collection: SUBSCRIBERS_COLLECTION_NAME,
   timestamps: true,
 })
-export class EmailSubscriberModel extends Document implements  Subscriber {
+export class EmailSubscriberModel extends Document implements Subscriber {
   @Prop()
   public email: string;
 
@@ -19,4 +19,5 @@ export class EmailSubscriberModel extends Document implements  Subscriber {
   public lastname: string;
 }
 
-export const EmailSubscriberSchema = SchemaFactory.createForClass(EmailSubscriberModel);
+export const EmailSubscriberSchema =
+  SchemaFactory.createForClass(EmailSubscriberModel);

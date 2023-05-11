@@ -7,15 +7,14 @@ import rabbitConfig from './config/rabbit.config';
 
 const ENV_USERS_FILE_PATH = 'apps/users/.users.env';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
       load: [appConfig, dbConfig, jwtConfig, rabbitConfig],
-      envFilePath: ENV_USERS_FILE_PATH
+      envFilePath: ENV_USERS_FILE_PATH,
     }),
-  ]
+  ],
 })
 export class ConfigUsersModule {}

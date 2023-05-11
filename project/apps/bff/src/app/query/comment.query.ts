@@ -1,13 +1,12 @@
-import {  IsNumber, IsOptional } from 'class-validator';
+import { IsNumber, IsOptional } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { DEFAULT_COMMENT_COUNT_LIMIT } from '../bff.constant';
 
 export class CommentQuery {
-  @Transform(({ value } ) => +value || DEFAULT_COMMENT_COUNT_LIMIT)
+  @Transform(({ value }) => +value || DEFAULT_COMMENT_COUNT_LIMIT)
   @IsNumber()
   @IsOptional()
   public limit = DEFAULT_COMMENT_COUNT_LIMIT;
-
 
   @Transform(({ value }) => +value)
   @IsOptional()

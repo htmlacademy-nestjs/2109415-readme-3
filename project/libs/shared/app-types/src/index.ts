@@ -13,3 +13,4 @@ export * from './lib/request-with.user';
 export * from './lib/refresh-token-payload.interface';
 export * from './lib/token.interface';
 export * from './lib/request-with-token-payload';
+export * from './lib/validation-schema-type.enum';

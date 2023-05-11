@@ -7,9 +7,12 @@ import { EmailSubscriberModel } from './email-subscriber.model';
 import { Model } from 'mongoose';
 
 @Injectable()
-export class EmailSubscriberRepository implements CRUDRepository<EmailSubscriberEntity, string, Subscriber> {
+export class EmailSubscriberRepository
+  implements CRUDRepository<EmailSubscriberEntity, string, Subscriber>
+{
   constructor(
-    @InjectModel(EmailSubscriberModel.name) private readonly emailSubscriberModel: Model<EmailSubscriberModel>
+    @InjectModel(EmailSubscriberModel.name)
+    private readonly emailSubscriberModel: Model<EmailSubscriberModel>
   ) {}
 
   public async create(item: EmailSubscriberEntity): Promise<Subscriber> {
@@ -18,25 +21,23 @@ export class EmailSubscriberRepository implements CRUDRepository<EmailSubscriber
   }
 
   public async destroy(id: string): Promise<void> {
-    this.emailSubscriberModel
-      .deleteOne({ _id: id });
+    this.emailSubscriberModel.deleteOne({ _id: id });
   }
 
   public async findById(id: string): Promise<Subscriber | null> {
-    return this.emailSubscriberModel
-      .findOne({ _id: id })
-      .exec();
+    return this.emailSubscriberModel.findOne({ _id: id }).exec();
   }
 
-  public async update(id: string, item: EmailSubscriberEntity): Promise<Subscriber> {
+  public async update(
+    id: string,
+    item: EmailSubscriberEntity
+  ): Promise<Subscriber> {
     return this.emailSubscriberModel
       .findByIdAndUpdate(id, item.toObject(), { new: true })
       .exec();
   }
 
   public async findByEmail(email: string): Promise<Subscriber | null> {
-    return this.emailSubscriberModel
-      .findOne({ email })
-      .exec()
+    return this.emailSubscriberModel.findOne({ email }).exec();
   }
 }

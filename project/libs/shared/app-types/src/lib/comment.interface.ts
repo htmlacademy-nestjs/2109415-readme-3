@@ -1,5 +1,5 @@
 export interface Comment {
-  commentId?: number,
+  commentId?: number;
   message: string;
   userId: string;
   postId?: number;

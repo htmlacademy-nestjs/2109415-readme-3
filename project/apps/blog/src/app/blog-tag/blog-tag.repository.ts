@@ -67,8 +67,4 @@ export class BlogTagRepository
       },
     });
   }
-
-  public async update(_id: number, _item: BlogTagEntity): Promise<Tag> {
-    return Promise.resolve(undefined);
-  }
 }

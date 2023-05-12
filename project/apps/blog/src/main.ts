@@ -1,8 +1,3 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -16,10 +11,10 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
   const document = SwaggerModule.createDocument(app, config);
   const port = process.env.PORT || 3333;
 
+  app.setGlobalPrefix(globalPrefix);
   SwaggerModule.setup('spec', app, document);
 
   app.useGlobalPipes(

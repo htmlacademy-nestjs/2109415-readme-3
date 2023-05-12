@@ -53,8 +53,4 @@ export class CommentRepository
       skip: page > 0 ? limit * (page - 1) : undefined,
     });
   }
-
-  public update(_id: number, _item: CommentEntity): Promise<Comment> {
-    return Promise.resolve(undefined);
-  }
 }
